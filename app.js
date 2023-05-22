@@ -1,3 +1,5 @@
+// npx nodemon init
+
 let express = require('express'),
   path = require('path'),
   mongoose = require('mongoose'),
@@ -19,7 +21,7 @@ mongoose.connect(dataBaseConfig.db, {
     console.log('Could not connected to database : ' + error)
   }
 )
-const songRoute = require('./routes/song.route')
+const petitionRoute = require('./routes/petition.route')
 const app = express();
 app.use(bodyParser.urlencoded({
     extended: true
@@ -27,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cors());
 // RESTful API root
-app.use('/api', songRoute)
+app.use('/api', petitionRoute)
 // PORT
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
